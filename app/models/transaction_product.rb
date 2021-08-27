@@ -1,0 +1,2 @@
+class TransactionProduct < ApplicationRecord
+end
