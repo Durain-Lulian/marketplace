@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_27_140546) do
+ActiveRecord::Schema.define(version: 2021_08_27_140656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.uuid "seller_id"
+    t.text "description"
+    t.float "price"
+    t.integer "cashback_percentage"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "sellers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
@@ -28,4 +39,5 @@ ActiveRecord::Schema.define(version: 2021_08_27_140546) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "products", "sellers"
 end
