@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
     belongs_to :seller
-    has_many :transaction_products
-    has_many :transactions, through: :transactions
+    has_many :receipt_products
+    has_many :receipts, through: :receipts
 end
