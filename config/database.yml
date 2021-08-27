@@ -3,9 +3,9 @@ default: &default
   encoding: unicode
   # pool: 20
   # timeout: 5000
-  username: postgres
-  password: postgres
-  host: localhost
+  username: <%= ENV['RDS_USER'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_ENDPOINT'] %>
   port: 5432
 
 development:
