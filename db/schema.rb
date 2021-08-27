@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_27_141051) do
+ActiveRecord::Schema.define(version: 2021_08_27_141935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 2021_08_27_141051) do
   create_table "sellers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shopping_carts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.uuid "product_id"
+    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -54,4 +62,7 @@ ActiveRecord::Schema.define(version: 2021_08_27_141051) do
   end
 
   add_foreign_key "products", "sellers"
+  add_foreign_key "transaction_products", "products"
+  add_foreign_key "transaction_products", "transactions"
+  add_foreign_key "transactions", "users"
 end
