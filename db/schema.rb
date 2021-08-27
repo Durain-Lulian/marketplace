@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_27_230854) do
+ActiveRecord::Schema.define(version: 2021_08_27_231640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -65,4 +65,6 @@ ActiveRecord::Schema.define(version: 2021_08_27_230854) do
   add_foreign_key "receipt_products", "products"
   add_foreign_key "receipt_products", "receipts"
   add_foreign_key "receipts", "users"
+  add_foreign_key "shopping_carts", "products"
+  add_foreign_key "shopping_carts", "users"
 end

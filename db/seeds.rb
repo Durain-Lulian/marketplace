@@ -13,4 +13,4 @@ product = Product.create(seller: seller)
 
 receipt = Receipt.create(user: user)
 
-receipt_product = Receipt.create(product: product, receipt: receipt)
+receipt_product = ReceiptProduct.create(product: product, receipt: receipt)
