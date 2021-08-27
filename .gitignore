@@ -35,6 +35,9 @@
 # Ignore local env file
 /config/local_env.yml
 
+# Ignore seed files
+/db/seeds
+
 /public/packs
 /public/packs-test
 /node_modules
