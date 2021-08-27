@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_27_231640) do
+ActiveRecord::Schema.define(version: 2021_08_27_232943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -48,10 +48,16 @@ ActiveRecord::Schema.define(version: 2021_08_27_231640) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "shopping_carts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id"
+  create_table "shopping_cart_products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "shopping_cart_id"
     t.uuid "product_id"
     t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shopping_carts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -65,6 +71,7 @@ ActiveRecord::Schema.define(version: 2021_08_27_231640) do
   add_foreign_key "receipt_products", "products"
   add_foreign_key "receipt_products", "receipts"
   add_foreign_key "receipts", "users"
-  add_foreign_key "shopping_carts", "products"
+  add_foreign_key "shopping_cart_products", "products"
+  add_foreign_key "shopping_cart_products", "shopping_carts"
   add_foreign_key "shopping_carts", "users"
 end
