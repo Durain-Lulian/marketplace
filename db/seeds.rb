@@ -8,13 +8,10 @@
 
 user = User.create()
 seller = Seller.create()
-
 product = Product.create(seller: seller)
 
 receipt = Receipt.create(user: user)
-
 receipt_product = ReceiptProduct.create(product: product, receipt: receipt)
 
 shopping_cart = ShoppingCart.create(user: user)
-
 shopping_cart_product = ShoppingCartProduct.create(product: product, shopping_cart: shopping_cart)
