@@ -1,0 +1,2 @@
+class ReceiptProduct < ApplicationRecord
+end

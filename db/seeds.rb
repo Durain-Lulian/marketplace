@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user = User.create()
+seller = Seller.create()
+
+product = Product.create(seller: seller)
+
+receipt = Receipt.create(user: user)
+
+receipt_product = Receipt.create(product: product, receipt: receipt)

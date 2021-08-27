@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_27_141935) do
+ActiveRecord::Schema.define(version: 2021_08_27_230854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(version: 2021_08_27_141935) do
     t.float "price"
     t.integer "cashback_percentage"
     t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "receipt_products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "receipt_id"
+    t.uuid "product_id"
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "receipts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,27 +56,13 @@ ActiveRecord::Schema.define(version: 2021_08_27_141935) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "transaction_products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "transaction_id"
-    t.uuid "product_id"
-    t.integer "quantity"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "products", "sellers"
-  add_foreign_key "transaction_products", "products"
-  add_foreign_key "transaction_products", "transactions"
-  add_foreign_key "transactions", "users"
+  add_foreign_key "receipt_products", "products"
+  add_foreign_key "receipt_products", "receipts"
+  add_foreign_key "receipts", "users"
 end
