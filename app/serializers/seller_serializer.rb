@@ -10,7 +10,11 @@ class SellerSerializer
         product_cashback.max
     end
 
-    attribute :top_deals do |seller|
-        "awl;djtfh"
+    attribute :products do |seller|
+        items = seller.products.order(cashback_percentage: :desc)
+
+        serializer = ProductSerializer.new(items)
+
+        serializer.serializable_hash
     end
 end
