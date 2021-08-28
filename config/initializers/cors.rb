@@ -14,6 +14,6 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
         # All asset fetches should be via GET
         # Support OPTIONS for pre-flight requests
         # https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Preflighted_requests
-        methods: [:get, :options]
+        methods: [:get, :options, :post, :put, :patch, :delete, :head]
     end
   end
