@@ -1,4 +1,11 @@
 class CartController < ApplicationController
+    def get
+        user_id = params[:user_id]
+        user = User.find_by(id: user_id)
+        serializer = ShoppingCartSerializer.new(user.shopping_cart)
+        render json: serializer.serializable_hash , status: 200
+    end
+    
     def add
         user_id = params[:user_id]
         product_id = params[:product_id]
