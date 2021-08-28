@@ -10,6 +10,6 @@ Rails.application.routes.draw do
 
   # products
   get '/marketplace/products/search', to: 'product#search'
-  get '/products', to: 'product#get_products'
-  get '/product', to: 'product#get_product'
+  get '/marketplace/products', to: 'product#get_products'
+  get '/marketplace/product', to: 'product#get_product'
 end

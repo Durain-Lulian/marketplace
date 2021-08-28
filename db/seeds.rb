@@ -17,6 +17,7 @@ csv.each do |row|
     shop.name = row['name']
     shop.category = row['category']
     shop.image_url = row['url']
+    shop.rating =  rand * 5.0
     shop.save
 end
 puts "There are now #{Seller.count} rows in the seller table"

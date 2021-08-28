@@ -13,8 +13,12 @@ class SellerSerializer
     attribute :products do |seller|
         items = seller.products.order(cashback_percentage: :desc)
 
-        serializer = ProductSerializer.new(items)
+        serializer = ProductSerializer.new(items, { fields: { product: [:name, :image, :slug, :cashback_percentage, :price, :rating] } })
 
         serializer.serializable_hash
+    end
+
+    attribute :rating do |seller|
+        seller.rating.round(2)
     end
 end
