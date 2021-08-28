@@ -31,7 +31,7 @@ csv.each do |row|
     product.description = row['description']
     product.price = row['price']
     # product.cashback_percentage = row['cashback_percentage']
-    product.image = row['image']
+    product.image = row['image_url']
     shop = Seller.find_by(name: row['seller_name'])
     product.seller = shop
     product.save
