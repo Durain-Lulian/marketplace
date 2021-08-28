@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/marketplace/healthcheck', to: 'application#healthcheck'
 
   # shops
-  get '/shops-by-category', to: 'shop#get_shops_by_category'
+  get '/shops-by-category', to: 'seller#get_shops_by_category'
 
   # products
   get '/products/search', to: 'product#search'

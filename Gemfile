@@ -29,7 +29,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 # slug
-gem 'friendly_id', '~> 5.4.0'gem 'jsonapi-serializer'
+gem 'friendly_id', '~> 5.4.0'
+gem 'jsonapi-serializer'
 
 # serializer lerializer
 gem 'jsonapi-serializer'

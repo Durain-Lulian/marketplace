@@ -8,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.float :price
       t.integer :cashback_percentage
       t.string :image
+      t.float :rating
       t.timestamps
     end
 
