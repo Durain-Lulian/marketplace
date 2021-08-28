@@ -18,4 +18,18 @@ class SellerController < ApplicationController
 
         render json: serializer.serializable_hash, status: 200
     end
+
+    def get_all
+        sellers = ::Seller.all
+
+        serializer = SellerSerializer.new(sellers, { fields: { seller: [:name, :image_url, :slug, :max_cashback, :category] } })
+
+        render json: serializer.serializable_hash, status: 200
+    end
+
+    def get_categories
+        categories = ::Seller.all.pluck(:category).uniq
+
+        render json: categories, status: 200
+    end
 end

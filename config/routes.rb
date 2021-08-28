@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # shops
   post '/marketplace/shops-by-category', to: 'seller#get_shops_by_category'
   post '/marketplace/shop', to: 'seller#get_shop'
+  post '/marketplace/shop/categories', to: 'seller#get_categories'
+  post '/marketplace/shops', to: 'seller#get_all'
 
   # products
   post '/marketplace/products/search', to: 'product#search'

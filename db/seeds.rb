@@ -7,9 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
+ReceiptProduct.delete_all
+ShoppingCartProduct.delete_all
+ShoppingCart.delete_all
+Product.delete_all
+Receipt.delete_all
+User.delete_all
+Seller.delete_all
 
-user = User.create()
-cart = ShoppingCart.create(user: user)
+# user = User.create()
+# cart = ShoppingCart.create(user: user)
 
 csv_text = File.read(Rails.root.join('db/seeds', 'shops.csv'))
 csv = CSV.parse(csv_text, headers: true, col_sep: ',', encoding: 'UTF-8')
