@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # shops
   get '/shops-by-category', to: 'seller#get_shops_by_category'
+  get '/shop', to: 'seller#get_shop'
 
   # products
   get '/products/search', to: 'product#search'
