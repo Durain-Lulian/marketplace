@@ -11,16 +11,34 @@ require 'csv'
 user = User.create()
 
 csv_text = File.read(Rails.root.join('db/seeds', 'shops.csv'))
-    csv = CSV.parse(csv_text, headers: true, encoding: 'UTF-8')
-    csv.each do |row|
-        shop = Seller.new
-        shop.name = row['shop_name']
-        shop.cashback_percentage = row['cashback'].to_i
-        shop.category = row['category']
-        shop.image_url = row['url']
-        shop.save
-    end
-    puts "There are now #{Seller.count} rows in the seller table"
+csv = CSV.parse(csv_text, headers: true, col_sep: ',', encoding: 'UTF-8')
+csv.each do |row|
+    shop = Seller.new
+    shop.name = row['name']
+    puts row['name']
+    shop.cashback_percentage = row['cashback'].to_i
+    shop.category = row['category']
+    shop.image_url = row['url']
+    shop.save
+end
+puts "There are now #{Seller.count} rows in the seller table"
+
+csv_text = File.read(Rails.root.join('db/seeds', 'products.csv'))
+csv = CSV.parse(csv_text, headers: true, :quote_char => '"', encoding: 'UTF-8')
+csv.each do |row|
+    product = Product.new
+    product.name = row['name']
+    product.description = row['description']
+    product.price = row['price']
+    # product.cashback_percentage = row['cashback_percentage']
+    product.image = row['image']
+    shop = Seller.find_by(name: row['seller_name'])
+    product.seller = shop
+    product.save
+    puts product.errors.full_messages
+end
+puts "There are now #{Product.count} rows in the product table"
+
 
 # product = Product.create(seller: seller)
 
