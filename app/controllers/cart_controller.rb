@@ -5,7 +5,7 @@ class CartController < ApplicationController
         serializer = ShoppingCartSerializer.new(user.shopping_cart)
         render json: serializer.serializable_hash , status: 200
     end
-    
+
     def add
         user_id = params[:user_id]
         product_id = params[:product_id]
@@ -45,5 +45,19 @@ class CartController < ApplicationController
         user = User.find_by(id: user_id)
         serializer = ShoppingCartSerializer.new(user.shopping_cart)
         render json: serializer.serializable_hash , status: 200
+    end
+
+    def checkout
+        user_id = params[:user_id]
+        user = User.find_by(id: user_id)
+
+        shopping_cart = user.shopping_cart
+        products = shopping_cart.products
+
+        receipt = Receipt.from_cart(shopping_cart)
+
+        ShoppingCartProduct.where(shopping_cart: shopping_cart).destroy_all
+
+        render json: receipt, status: 200
     end
 end

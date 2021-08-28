@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   post '/marketplace/cart/delete', to: 'cart#delete'
   post '/marketplace/cart/update', to: 'cart#update'
   post '/marketplace/cart/get', to: 'cart#get'
-
+  post '/marketplace/cart/checkout', to: 'cart#checkout'
 end
