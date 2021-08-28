@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_08_27_232943) do
 
   create_table "products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
+    t.string "slug"
     t.uuid "seller_id"
     t.text "description"
     t.float "price"
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_08_27_232943) do
 
   create_table "sellers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
+    t.string "slug"
     t.text "description"
     t.string "category"
     t.string "image_url"

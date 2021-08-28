@@ -15,7 +15,6 @@ csv = CSV.parse(csv_text, headers: true, col_sep: ',', encoding: 'UTF-8')
 csv.each do |row|
     shop = Seller.new
     shop.name = row['name']
-    puts row['name']
     shop.cashback_percentage = row['cashback'].to_i
     shop.category = row['category']
     shop.image_url = row['url']
@@ -32,6 +31,7 @@ csv.each do |row|
     product.price = row['price']
     # product.cashback_percentage = row['cashback_percentage']
     product.image = row['image_url']
+    puts row['seller_name']
     shop = Seller.find_by(name: row['seller_name'])
     product.seller = shop
     product.save
