@@ -15,7 +15,7 @@ class ProductController < ApplicationController
         products = ::Product.where('LOWER(name) like ?', 
             "%#{product_name}%")
 
-        serializer = ProductSerializer.new(products, { fields: { product: [:name, :image, :slug, :cashback_percentage, :price, :rating] } })
+        serializer = ProductSerializer.new(products, { fields: { product: [:name, :image, :slug, :cashback_percentage, :price, :rating, :number_sold] } })
 
         render json: serializer.serializable_hash, status: 200
     end

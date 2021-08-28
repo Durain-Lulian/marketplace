@@ -43,7 +43,8 @@ csv.each do |row|
     shop = Seller.find_by(name: row['seller_name'])
     product.seller = shop
     product.cashback_percentage = row['cashback'].to_i
-    product.rating =  rand * 5.0
+    product.rating = rand * 5.0
+    product.stock = (rand * 200 + 100).to_i
     product.save
     puts product.errors.full_messages
 end

@@ -7,4 +7,10 @@ class UserController < ApplicationController
 
         render json: user, status: 200
     end
+
+    def get_by_id
+        user_id = params[:user_id]
+
+        user = 
+    end
 end
