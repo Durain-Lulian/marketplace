@@ -15,4 +15,12 @@ class ReceiptProductSerializer
     attributes :image do |rp| 
         rp.product.image
     end
+
+    attributes :cashback_percentage do |rp| 
+        rp.product.cashback_percentage
+    end
+
+    attributes :cashback_amount do |rp| 
+        rp.product.cashback_percentage * rp.quantity * rp.product.price / 100
+    end
 end
