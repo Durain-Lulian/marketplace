@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   # shopping cart
   put '/marketplace/cart', to: 'cart#add'
+  delete '/marketplace/cart', to: 'cart#delete'
 end
