@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   post '/marketplace/cart/update', to: 'cart#update'
   post '/marketplace/cart/get', to: 'cart#get'
   post '/marketplace/cart/checkout', to: 'cart#checkout'
+
+  # receipts
+  post "/marketplace/receipts/get", to: "receipt#get_receipts"
 end
