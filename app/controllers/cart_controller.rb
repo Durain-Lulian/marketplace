@@ -52,7 +52,6 @@ class CartController < ApplicationController
         user = User.find_by(id: user_id)
 
         shopping_cart = user.shopping_cart
-        products = shopping_cart.products
 
         receipt = Receipt.from_cart(shopping_cart)
 

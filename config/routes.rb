@@ -22,4 +22,7 @@ Rails.application.routes.draw do
 
   # receipts
   post "/marketplace/receipts/get", to: "receipt#get_receipts"
+
+  # users
+  post "/marketplace/users/create", to: "user#create"
 end
