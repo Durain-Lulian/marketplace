@@ -58,6 +58,8 @@ class CartController < ApplicationController
 
         ShoppingCartProduct.where(shopping_cart: shopping_cart).destroy_all
 
-        render json: receipt, status: 200
+        serializer = ReceiptSerializer.new(receipt)
+
+        render json: serializer.serializable_hash , status: 200
     end
 end
