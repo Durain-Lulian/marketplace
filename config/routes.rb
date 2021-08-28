@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   # products
   get '/products/search', to: 'product#search'
   get '/products', to: 'product#get_products'
-
+  get '/product', to: 'product#get_product'
 end
