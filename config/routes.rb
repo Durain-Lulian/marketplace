@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   get '/marketplace/healthcheck', to: 'application#healthcheck'
 
   # shops
-  post '/marketplace/shops-by-category', to: 'seller#post_shops_by_category'
-  post '/marketplace/shop', to: 'seller#post_shop'
+  post '/marketplace/shops-by-category', to: 'seller#get_shops_by_category'
+  post '/marketplace/shop', to: 'seller#get_shop'
 
   # products
   post '/marketplace/products/search', to: 'product#search'
-  post '/marketplace/products', to: 'product#post_products'
-  post '/marketplace/product', to: 'product#post_product'
+  post '/marketplace/products', to: 'product#get_products'
+  post '/marketplace/product', to: 'product#get_product'
 
   # shopping cart
   post '/marketplace/cart/add', to: 'cart#add'
