@@ -9,6 +9,7 @@ require 'csv'
 
 
 user = User.create()
+cart = ShoppingCart.create(user: user)
 
 csv_text = File.read(Rails.root.join('db/seeds', 'shops.csv'))
 csv = CSV.parse(csv_text, headers: true, col_sep: ',', encoding: 'UTF-8')

@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get '/marketplace/products/search', to: 'product#search'
   get '/marketplace/products', to: 'product#get_products'
   get '/marketplace/product', to: 'product#get_product'
+
+  # shopping cart
+  put '/marketplace/cart', to: 'cart#add'
 end
