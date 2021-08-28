@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   get '/marketplace/healthcheck', to: 'application#healthcheck'
 
   # shops
-  get '/shops-by-category', to: 'seller#get_shops_by_category'
-  get '/shop', to: 'seller#get_shop'
+  get '/marketplace/shops-by-category', to: 'seller#get_shops_by_category'
+  get '/marketplace/shop', to: 'seller#get_shop'
 
   # products
-  get '/products/search', to: 'product#search'
+  get '/marketplace/products/search', to: 'product#search'
   get '/products', to: 'product#get_products'
   get '/product', to: 'product#get_product'
 end
