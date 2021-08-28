@@ -11,7 +11,18 @@ module Marketplace
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     
-    #local_env.yml
+    config.time_zone = 'Asia/Singapore'
+    config.active_record.default_timezone = :local
+    config.hosts << "shopin-nlb-2e8c56778828d4fe.elb.ap-southeast-1.amazonaws.com"
+
+    config.action_dispatch.default_headers = {
+      'Access-Control-Allow-Origin' => 'http://localhost:3001',
+      'Access-Control-Allow-Methods' => 'POST, PUT, DELETE, GET, OPTIONS',
+      'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+      'Access-Control-Request-Method' => '*'
+    }
+
+    #local_env.yml 
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'local_env.yml')
       if File.exist?(env_file)
