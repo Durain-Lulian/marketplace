@@ -2,7 +2,7 @@
 class SellerSerializer
     include JSONAPI::Serializer
 
-    attributes :name, :image_url, :slug, :category
+    attributes :name, :image_url, :slug, :category, :description
 
     attribute :max_cashback do |seller| 
         product_cashback = seller.products.pluck(:cashback_percentage)
