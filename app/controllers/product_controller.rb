@@ -2,6 +2,11 @@ class ProductController < ApplicationController
     def search
         product_name = params[:name].downcase
 
+        if product_name.blank? 
+            render json: { error: "Invalid Argument: query cannot be blank" }, status: 400
+            return
+        end
+
         product_names = ::Product.where('LOWER(name) like ?', 
             "%#{product_name}%")
             .pluck(:name)
