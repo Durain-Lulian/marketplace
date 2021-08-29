@@ -2,17 +2,26 @@
 class ShoppingCartProductSerializer
     include JSONAPI::Serializer
 
-    attributes :product_id, :quantity, :name
+    attributes :product_id, :quantity
 
+    
     attribute :price do |scp|
         scp.product.price
     end
 
-    attributes :total_price do |scp| 
+    attribute :total_price do |scp| 
         scp.total_price
     end
 
-    attributes :image do |scp| 
+    attribute :image do |scp| 
         scp.product.image
+    end
+
+    attribute :name do |scp| 
+        scp.product.name
+    end
+
+    attribute :description do |scp| 
+        scp.product.description
     end
 end

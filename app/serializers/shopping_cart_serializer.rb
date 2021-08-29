@@ -18,5 +18,15 @@ class ShoppingCartSerializer
         serializer = ShoppingCartProductSerializer.new(shopping_cart_products)
 
         serializer.serializable_hash
-    end        
+    end
+
+    attribute :number_of_products do |cart|
+        shopping_cart_products = cart.shopping_cart_products
+        
+        sum = 0
+        shopping_cart_products.each do |scp|
+            sum += scp.quantity
+        end
+        sum
+    end
 end
