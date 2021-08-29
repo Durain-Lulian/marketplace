@@ -22,9 +22,10 @@ csv_text = File.read(Rails.root.join('db/seeds', 'shops.csv'))
 csv = CSV.parse(csv_text, headers: true, col_sep: ',', encoding: 'UTF-8')
 csv.each do |row|
     shop = Seller.new
-    shop.name = row['name']
+    shop.name = row['seller_name']
     shop.category = row['category']
     shop.image_url = row['url']
+    shop.cashback = row['cashback']
     shop.rating =  rand * 5.0
     shop.save
 end
@@ -39,10 +40,10 @@ csv.each do |row|
     product.price = row['price']
     # product.cashback_percentage = row['cashback_percentage']
     product.image = row['image_url']
-    puts row['seller_name']
+    product.category = row['category']
     shop = Seller.find_by(name: row['seller_name'])
     product.seller = shop
-    product.cashback_percentage = row['cashback'].to_i
+    product.cashback_percentage = row['cashback_percentage'].to_i
     product.rating = rand * 5.0
     product.stock = (rand * 200 + 100).to_i
     product.save
